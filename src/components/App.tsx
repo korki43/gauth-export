@@ -4,7 +4,7 @@ import LinkOutput from './LinkOutput';
 import QrInput from './QrInput';
 
 const App: React.FC = () => {
-  const [migrationUrl, setMigrationUrl] = useState<string | null>(null);
+  const [otpURIs, setOtpURIs] = useState<string[]>([]);
   return (
     <div className='vh-100 d-flex flex-column justify-content-between'>
       <Container className='mt-4'>
@@ -13,8 +13,8 @@ const App: React.FC = () => {
           Transform your Google Authenticator Exports to standard <i>otpauth</i>{' '}
           links which other OTP Managers can use.
         </p>
-        <QrInput setMigrationUrl={setMigrationUrl} />
-        {migrationUrl && <LinkOutput migrationUrl={migrationUrl} />}
+        <QrInput setOtpURIs={setOtpURIs} />
+        {otpURIs.length ? <LinkOutput otpURIs={otpURIs} /> : null}
       </Container>
       <footer className='bg-light py-3 px-5 text-muted small'>
         <div className='d-flex justify-content-between align-items-center'>
