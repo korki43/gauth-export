@@ -4,6 +4,7 @@
 
 Rewrite without React
 Allow direct input of otpauth-migration URI
+Fix Typos
 
 ---
 
