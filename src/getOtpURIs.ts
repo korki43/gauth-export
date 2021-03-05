@@ -7,9 +7,6 @@ import {
 import { HOTP, TOTP, Secret } from 'otpauth';
 
 export function getOtpAuthUris(otpExportParams: OtpParameters[]) {
-  const acc = otpExportParams[0];
-  const sec = new Secret({ buffer: acc.secret });
-  console.log(acc, sec.b32);
   return otpExportParams.map((account) => {
     const secret = new Secret({ buffer: account.secret });
     if (account.type === OtpType.OTP_TYPE_TOTP) {

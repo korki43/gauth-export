@@ -1,7 +1,10 @@
 # Changelog
 
 ## Unreleased
-Changes in the upcoming version are documented here.
+
+Rewrite without React
+Allow direct input of otpauth-migration URI
+Fix Typos
 
 ---
 
