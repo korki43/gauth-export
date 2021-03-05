@@ -33,7 +33,7 @@ jobs:
 
       - name: Get Release Notes
         # get Release Notes from changelog
-        run: awk '/## ${{ env.RELEASE_VERSION }}/,/---/' changelog.md > ./release-notes.md
+        run: awk '/## ${{ env.RELEASE_VERSION }}/,/---/' CHANGELOG.md > ./release-notes.md
 
       - name: Create GitHub Release
         id: create_release
