@@ -1,6 +1,11 @@
 # Changelog
 
 ## Unreleased
+Changes in the upcoming version are documented here.
+
+---
+
+## v2.0.1
 
 adjust CI for uppercase changelog
 
