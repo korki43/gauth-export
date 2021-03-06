@@ -58,6 +58,7 @@ qrFileInput.addEventListener('change', async (e: any) => {
 });
 
 function processMigrationURI(uri: string) {
+  if (uri.length == 0) return;
   uriListHeader.classList.add('hidden');
   errorBox.innerText = '';
   while (uriList.firstChild) {

@@ -1,7 +1,8 @@
 # Changelog
 
 ## Unreleased
-Changes in the upcoming version are documented here.
+
+ignore empty migration URI
 
 ---
 
@@ -13,9 +14,9 @@ adjust CI for uppercase changelog
 
 ## v2.0.0
 
-Rewrite without React
-Allow direct input of otpauth-migration URI
-Fix Typos
+- rewrite without React
+- allow direct input of otpauth-migration URI
+- fix Typos
 
 ---
 
