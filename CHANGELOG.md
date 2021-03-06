@@ -1,6 +1,11 @@
 # Changelog
 
 ## Unreleased
+Changes in the upcoming version are documented here.
+
+---
+
+## v2.0.2
 
 ignore empty migration URI
 
