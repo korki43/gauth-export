@@ -1,6 +1,6 @@
 {
   "name": "gauth-export",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve --open",
