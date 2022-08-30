@@ -58,10 +58,6 @@ if(qrFileInput) {
         }
       });
 
-      while (uriList?.firstChild) {
-        uriList.firstChild.remove();
-      }
-
       if(textField) {
         textField.value = data.data;
       }
@@ -79,6 +75,10 @@ if(qrFileInput) {
 }
 
 function processMigrationURI(uri: string): void {
+  while (uriList?.firstChild) {
+    uriList.firstChild.remove();
+  }
+  
   if(!uri) {
     return;
   }

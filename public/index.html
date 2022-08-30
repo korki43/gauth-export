@@ -14,21 +14,20 @@
           Transform your Google Authenticator Exports to standard <i>otpauth</i>
           links which other OTP Managers can use.
         </p>
-        <form>
-          <label class="mdc-text-field mdc-text-field--filled migration-uri-field">
-            <span class="mdc-text-field__ripple"></span>
-            <span class="mdc-floating-label" id="migration-uri-label">Migration URI</span>
-            <input id="migration-uri" type="text" placeholder="otpauth-migration URI here" class="mdc-text-field__input" aria-labelledby="migration-uri-label">
-            <span class="mdc-line-ripple"></span>
-          </label>
-
+        <form class="migrate-form">
           <div class="file-upload">
             <div class="file-select">
               <div class="file-select-button" id="qr-file-label">QR code screenshot</div>
               <input type="file" name="qr-img-file" id="qr-file-input">
             </div>
           </div>
-
+          <label class="mdc-text-field mdc-text-field--filled migration-uri-field">
+            <span class="mdc-text-field__ripple"></span>
+            <span class="mdc-floating-label" id="migration-uri-label">Migration URI</span>
+            <input id="migration-uri" type="text" placeholder="otpauth-migration URI here" class="mdc-text-field__input" aria-labelledby="migration-uri-label">
+            <span class="mdc-line-ripple"></span>
+          </label>
+          
           <p id="error-box"></p>
         </form>
         <div class="hidden" id="uri-list-header">

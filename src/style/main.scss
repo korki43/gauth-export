@@ -6,6 +6,13 @@
   width: 100%;
 }
 
+.migrate-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 footer {
   margin-top: 24px;
 }
@@ -19,24 +26,16 @@ footer {
 
   .file-select {
     display: block;
-    border: 2px solid #dce4ec;
-    color: #34495e;
     cursor: pointer;
-    height: 40px;
-    line-height: 40px;
     text-align: left;
-    background: #ffffff;
     overflow: hidden;
     position: relative;
 
     &.active {
       .file-select {
-        border-color: #3fa46a;
         transition: all 0.2s ease-in-out;
 
         .file-select-button {
-          background: #3fa46a;
-          color: #ffffff;
           transition: all 0.2s ease-in-out;
         }
       }
@@ -47,8 +46,7 @@ footer {
       transition: all 0.2s ease-in-out;
 
       .file-select-button {
-        background: #34495e;
-        color: #ffffff;
+        background: #ccc;
         transition: all 0.2s ease-in-out;
       }
     }
@@ -103,7 +101,6 @@ footer {
       background: #dce4ec;
       padding: 0 10px;
       display: inline-block;
-      height: 40px;
       line-height: 40px;
     }
   }
