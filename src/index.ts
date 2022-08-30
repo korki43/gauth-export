@@ -33,56 +33,65 @@ MigrationURIInput.addEventListener('focusout', () => {
   processMigrationURI(MigrationURIInput.value);
 });
 
-qrFileInput.addEventListener('change', async (e: any) => {
+qrFileInput.addEventListener('change', async (e: Event) => {
   try {
     errorBox.innerText = '';
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      qrFileLabel.innerText = file.name;
-      const imgData = await readImageFromFile(file);
-      const data = await QrScanner.scanImage(imgData, { scanRegion: {
+
+    const input = e.target as HTMLInputElement;
+
+    if(!input || !input.files?.length) {
+      throw new Error("Couldn't read QR code");
+    }
+
+    const file = input.files[0];
+    qrFileLabel.innerText = file.name;
+    const imgData = await readImageFromFile(file);
+    const data = await QrScanner.scanImage(imgData, { 
+      scanRegion: {
         width: imgData.width, 
         height: imgData.height 
-      }});
-      if (data != null) {
-        MigrationURIInput.value = data.data;
-        processMigrationURI(data.data);
-      } else {
-        throw new Error("Couldn't read QR code");
       }
+    });
+
+    while (uriList.firstChild) {
+      uriList.firstChild.remove();
     }
+
+    MigrationURIInput.value = data.data;
+    processMigrationURI(data.data);
   } catch (e) {
     errorBox.innerText = e instanceof Error ? e.message : e;
   }
 });
 
-function processMigrationURI(uri: string) {
-  if (uri.length == 0) return;
+function processMigrationURI(uri: string): void {
+  if(!uri) {
+    return;
+  }
+
   uriListHeader.classList.add('hidden');
   errorBox.innerText = '';
-  while (uriList.firstChild) {
-    uriList.firstChild.remove();
-  }
+
   try {
     const otpExportData = decodeMigrationUrl(uri);
     const uris = getOtpAuthUris(otpExportData.otpParameters);
-    if (uris.length) {
-      uriListHeader.classList.remove('hidden');
-      uriDownloadLink.href = `data:text/plain;base64,${btoa(uris.join('\n'))}`;
-      uriDownloadLink.download = `gauth-export-${Date.now()}.txt`;
-      console.log(uriDownloadLink);
-      uris.forEach((uri) => {
-        const listElement = document.createElement('div');
-        listElement.classList.add('list-group-item');
-        const innerElement = document.createElement('code');
-        innerElement.innerText = uri;
-        listElement.appendChild(innerElement);
-        uriList.appendChild(listElement);
-      });
-    } else {
+    if(!uris.length) { 
       throw new Error('No otpauth URIs in migration URI');
     }
+
+    uriListHeader.classList.remove('hidden');
+    uriDownloadLink.href = `data:text/plain;base64,${btoa(uris.join('\n'))}`;
+    uriDownloadLink.download = `gauth-export-${Date.now()}.txt`;
+
+    for(const uri of uris) {
+      const listElement = document.createElement('div');
+      listElement.classList.add('list-group-item');
+      const innerElement = document.createElement('code');
+      innerElement.innerText = uri;
+      listElement.appendChild(innerElement);
+      uriList.appendChild(listElement);
+    }
   } catch (e) {
-    errorBox.innerText = e.message;
+    errorBox.innerText = e instanceof Error ? e.message : e;
   }
 }
