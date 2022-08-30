@@ -4,7 +4,7 @@ Transform Google Authenticator Migration QR Codes to plain otpauth URIs.
 
 ## Usage
 
-Navigate to Menu > Transfer accounts > Export accounts. (Max 4 accounts per QRCode)
+Navigate to Menu > Transfer accounts > Export accounts.
 Make a screenshot and upload it to this website.
 
 If the QR Code doesn't work for you, try scanning it with another app and enter the otpauth-migration URI manually.
