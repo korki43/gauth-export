@@ -52,7 +52,7 @@ qrFileInput.addEventListener('change', async (e: any) => {
       }
     }
   } catch (e) {
-    errorBox.innerText = e.message;
+    errorBox.innerText = e instanceof Error ? e.message : e;
   }
 });
 
