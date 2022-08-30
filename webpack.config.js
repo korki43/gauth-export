@@ -11,6 +11,7 @@ module.exports = (_env, args) => {
   return {
     entry: './src/index.ts',
     devtool: IS_DEV ? 'source-map' : false,
+    mode: IS_DEV ? 'development' : 'production',
     module: {
       rules: [
         {

@@ -1,13 +1,9 @@
 import './style/main.scss';
-import hmr from './hmr';
-import { readImageFromFile } from './readImageFile';
-import jsQR from 'jsqr';
-import { decodeMigrationUrl } from './decodeUrl';
-import { getOtpAuthUris } from './getOtpURIs';
 
-if (IS_DEV) {
-  hmr();
-}
+import { readImageFromFile } from './decode/readImageFile';
+import jsQR from 'jsqr';
+import { decodeMigrationUrl } from './decode/decodeUrl';
+import { getOtpAuthUris } from './decode/getOtpURIs';
 
 const form = document.querySelector('form') as HTMLFormElement;
 const qrFileInput = form.querySelector(
