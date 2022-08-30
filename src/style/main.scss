@@ -1,14 +1,112 @@
-.list-group-item {
-  padding: .4rem .75rem;
-}
-
-.gh-icon {
-  font-size: 1.5rem;
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.1em;
-}
-
 .hidden {
   display: none  !important;
+}
+
+.migration-uri-field {
+  width: 100%;
+}
+
+.file-upload {
+  margin-top: 14px;
+  display: block;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+
+  .file-select {
+    display: block;
+    border: 2px solid #dce4ec;
+    color: #34495e;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    background: #ffffff;
+    overflow: hidden;
+    position: relative;
+
+    &.active {
+      .file-select {
+        border-color: #3fa46a;
+        transition: all 0.2s ease-in-out;
+
+        .file-select-button {
+          background: #3fa46a;
+          color: #ffffff;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+    }
+
+    &:hover {
+      border-color: #34495e;
+      transition: all 0.2s ease-in-out;
+
+      .file-select-button {
+        background: #34495e;
+        color: #ffffff;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+
+    &.file-select-disabled {
+      opacity: 0.65;
+
+      &:hover {
+        cursor: default;
+        display: block;
+        border: 2px solid #dce4ec;
+        color: #34495e;
+        cursor: pointer;
+        height: 40px;
+        line-height: 40px;
+        margin-top: 5px;
+        text-align: left;
+        background: #ffffff;
+        overflow: hidden;
+        position: relative;
+
+        .file-select-button {
+          background: #dce4ec;
+          color: #666666;
+          padding: 0 10px;
+          display: inline-block;
+          height: 40px;
+          line-height: 40px;
+        }
+
+        .file-select-name {
+          line-height: 40px;
+          display: inline-block;
+          padding: 0 10px;
+        }
+      }
+    }
+
+    input[type="file"] {
+      z-index: 100;
+      cursor: pointer;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+
+    .file-select-button {
+      background: #dce4ec;
+      padding: 0 10px;
+      display: inline-block;
+      height: 40px;
+      line-height: 40px;
+    }
+
+    .file-select-name {
+      line-height: 40px;
+      display: inline-block;
+      padding: 0 10px;
+    }
+  }
 }

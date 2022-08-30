@@ -10,12 +10,12 @@ const qrFileInput = form.querySelector(
   'input#qr-file-input'
 ) as HTMLInputElement;
 const qrFileLabel = form.querySelector(
-  'label#qr-file-label'
+  'div#qr-file-label'
 ) as HTMLLabelElement;
 const MigrationURIInput = form.querySelector(
   'input#migration-uri'
 ) as HTMLInputElement;
-const errorBox = form.querySelector('p#error-box') as HTMLParagraphElement;
+const errorBox = form.querySelector('#error-box') as HTMLParagraphElement;
 const uriList = document.querySelector('#uri-list') as HTMLDivElement;
 const uriListHeader = document.querySelector(
   '#uri-list-header'
