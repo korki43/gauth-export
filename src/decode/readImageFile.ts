@@ -1,4 +1,4 @@
-export function readImageFromFile(file: File): Promise<ImageData> {
+export function readImageFromFile(file: File): Promise<HTMLImageElement> {
   return new Promise((resolve) => {
     const url = URL.createObjectURL(file);
     const img = new Image();
@@ -9,7 +9,7 @@ export function readImageFromFile(file: File): Promise<ImageData> {
       c.width = img.width;
       const ctx = c.getContext('2d')!;
       ctx.drawImage(img, 0, 0);
-      resolve(ctx.getImageData(0, 0, img.width, img.height));
+      resolve(img);
     });
   });
 }

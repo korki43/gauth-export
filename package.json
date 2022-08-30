@@ -10,9 +10,9 @@
   },
   "author": "korki",
   "dependencies": {
-    "jsqr": "^1.4.0",
     "otpauth": "^8.0.2",
-    "protobufjs": "^7.1.0"
+    "protobufjs": "^7.1.0",
+    "qr-scanner": "^1.4.1"
   },
   "devDependencies": {
     "@types/webpack-env": "^1.18.0",

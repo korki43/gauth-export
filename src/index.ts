@@ -1,7 +1,7 @@
 import './style/main.scss';
 
 import { readImageFromFile } from './decode/readImageFile';
-import jsQR from 'jsqr';
+import QrScanner from 'qr-scanner';
 import { decodeMigrationUrl } from './decode/decodeUrl';
 import { getOtpAuthUris } from './decode/getOtpURIs';
 
@@ -40,10 +40,13 @@ qrFileInput.addEventListener('change', async (e: any) => {
       const file = e.target.files[0];
       qrFileLabel.innerText = file.name;
       const imgData = await readImageFromFile(file);
-      const migrationURI = jsQR(imgData.data, imgData.width, imgData.height);
-      if (migrationURI != null) {
-        MigrationURIInput.value = migrationURI.data;
-        processMigrationURI(migrationURI.data);
+      const data = await QrScanner.scanImage(imgData, { scanRegion: {
+        width: imgData.width, 
+        height: imgData.height 
+      }});
+      if (data != null) {
+        MigrationURIInput.value = data.data;
+        processMigrationURI(data.data);
       } else {
         throw new Error("Couldn't read QR code");
       }
