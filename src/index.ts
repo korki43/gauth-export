@@ -4,6 +4,13 @@ import { readImageFromFile } from './decode/readImageFile';
 import QrScanner from 'qr-scanner';
 import { decodeMigrationUrl } from './decode/decodeUrl';
 import { getOtpAuthUris } from './decode/getOtpURIs';
+import { MDCTextField } from '@material/textfield';
+
+const migrationURIField = document.querySelector<HTMLLabelElement>('.migration-uri-field');
+let textField: MDCTextField | null = null;
+if(migrationURIField) {
+  textField = MDCTextField.attachTo(migrationURIField);
+}
 
 const form = document.querySelector('form') as HTMLFormElement;
 const qrFileInput = form.querySelector<HTMLInputElement>('input#qr-file-input');
@@ -55,8 +62,8 @@ if(qrFileInput) {
         uriList.firstChild.remove();
       }
 
-      if(migrationURIInput) {
-        migrationURIInput.value = data.data;
+      if(textField) {
+        textField.value = data.data;
       }
 
       processMigrationURI(data.data);
@@ -95,7 +102,7 @@ function processMigrationURI(uri: string): void {
     }
 
     if(!uriList) { return; }
-    
+
     for(const uri of uris) {
       const listElement = document.createElement('div');
       listElement.classList.add('list-group-item');
