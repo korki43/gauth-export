@@ -5,6 +5,12 @@ Changes in the upcoming version are documented here.
 
 ---
 
+## v2.0.3
+
+remove bootstrap dependency, upgrade dependencies, update design
+
+---
+
 ## v2.0.2
 
 ignore empty migration URI
