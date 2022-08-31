@@ -10,6 +10,7 @@
   },
   "author": "korki",
   "dependencies": {
+    "@material/button": "^14.0.0",
     "@material/textfield": "^14.0.0",
     "otpauth": "^8.0.2",
     "protobufjs": "^7.1.0",

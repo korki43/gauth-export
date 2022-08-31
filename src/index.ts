@@ -16,7 +16,7 @@ const form = document.querySelector('form') as HTMLFormElement;
 const qrFileInput = form.querySelector<HTMLInputElement>('input#qr-file-input');
 const qrFileLabel = form.querySelector<HTMLDivElement>('div#qr-file-label');
 const migrationURIInput = form.querySelector<HTMLInputElement>('input#migration-uri') ;
-const errorBox = form.querySelector<HTMLParagraphElement>('#error-box');
+const errorBox = document.querySelector<HTMLParagraphElement>('#error-box');
 const uriList = document.querySelector<HTMLDivElement>('#uri-list') ;
 const uriListHeader = document.querySelector<HTMLHeadingElement>('#uri-list-header');
 const uriDownloadLink = document.querySelector<HTMLAnchorElement>('#uris-download-link');
@@ -37,7 +37,10 @@ if(migrationURIInput) {
 if(qrFileInput) {
   qrFileInput.addEventListener('change', async (e: Event) => {
     try {
-      if(errorBox) { errorBox.innerText = ''; }
+      if(errorBox) {
+        errorBox.classList.add('hidden');
+        errorBox.innerText = ''; 
+      }
   
       const input = e.target as HTMLInputElement;
   
@@ -67,6 +70,7 @@ if(qrFileInput) {
       const errorString = e instanceof Error ? e.message : e;
       console.error(errorString);
       if(errorBox) {
+        errorBox.classList.remove('hidden');
         errorBox.innerText = errorString;
         return;
       }
@@ -78,14 +82,17 @@ function processMigrationURI(uri: string): void {
   while (uriList?.firstChild) {
     uriList.firstChild.remove();
   }
-  
+
   if(!uri) {
     return;
   }
 
   uriListHeader?.classList.add('hidden');
 
-  if(errorBox) { errorBox.innerText = ''; }
+  if(errorBox) {
+    errorBox.classList.add('hidden');
+    errorBox.innerText = ''; 
+  }
 
   try {
     const otpExportData = decodeMigrationUrl(uri);
@@ -95,6 +102,16 @@ function processMigrationURI(uri: string): void {
     }
 
     uriListHeader?.classList.remove('hidden');
+
+    const downloadButton = document.querySelector<HTMLButtonElement>('#download-export');
+
+    if(downloadButton) {
+      uriDownloadLink?.classList.add('hidden');
+      downloadButton?.addEventListener('click', (e: Event) => {
+        e.preventDefault();
+        uriDownloadLink?.click();
+      });
+    }
 
     if(uriDownloadLink) {
       uriDownloadLink.href = `data:text/plain;base64,${btoa(uris.join('\n'))}`;
@@ -113,7 +130,10 @@ function processMigrationURI(uri: string): void {
     }
   } catch (e) {
     const errorString = e instanceof Error ? e.message : e;
-    if(errorBox) { errorBox.innerText = errorString; }
+    if(errorBox) {
+      errorBox.classList.remove('hidden');
+      errorBox.innerText = errorString;
+    }
     console.error(errorString);
   }
 }
