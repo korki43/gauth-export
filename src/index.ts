@@ -18,7 +18,7 @@ const qrFileLabel = form.querySelector<HTMLDivElement>('div#qr-file-label');
 const migrationURIInput = form.querySelector<HTMLInputElement>('input#migration-uri') ;
 const errorBox = document.querySelector<HTMLParagraphElement>('#error-box');
 const uriList = document.querySelector<HTMLDivElement>('#uri-list') ;
-const uriListHeader = document.querySelector<HTMLHeadingElement>('#uri-list-header');
+const uriListContainer = document.querySelector<HTMLHeadingElement>('#uri-list-container');
 const uriDownloadLink = document.querySelector<HTMLAnchorElement>('#uris-download-link');
 
 form.addEventListener('submit', (e) => {
@@ -87,7 +87,8 @@ function processMigrationURI(uri: string): void {
     return;
   }
 
-  uriListHeader?.classList.add('hidden');
+  uriList?.classList.remove('hidden');
+  uriListContainer?.classList.add('hidden');
 
   if(errorBox) {
     errorBox.classList.add('hidden');
@@ -101,7 +102,7 @@ function processMigrationURI(uri: string): void {
       throw new Error('No otpauth URIs in migration URI');
     }
 
-    uriListHeader?.classList.remove('hidden');
+    uriListContainer?.classList.remove('hidden');
 
     const downloadButton = document.querySelector<HTMLButtonElement>('#download-export');
 
