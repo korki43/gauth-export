@@ -36,6 +36,17 @@ body {
   display: none !important;
 }
 
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  svg {
+    height: 100px;
+    width: 85px;
+  }
+}
+
 .migration-uri-field {
   width: 100%;
 }
