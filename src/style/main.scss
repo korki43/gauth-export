@@ -8,12 +8,20 @@
     --app-background: #1f1d2b;
     --main-text: #fff;
   }
+
+  footer svg {
+    fill: #fff;
+  }
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     --app-background: #f3f6fd;
     --main-text: #1f1c2e;
+  }
+
+  footer svg {
+    fill: #000;
   }
 }
 
@@ -33,9 +41,10 @@ body {
 
 .migrate-form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
+  gap: 15px;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 #download-export {
@@ -55,7 +64,14 @@ footer {
   margin-top: 24px;
 
   a {
+    opacity: .8;
+    transition: opacity .3s;
     color: var(--main-text);
+    text-decoration: none;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   svg {
@@ -82,7 +98,6 @@ footer {
       transition: all 0.2s ease-in-out;
 
       .file-select-button {
-        background: #333;
         transition: all 0.2s ease-in-out;
       }
     }
@@ -94,7 +109,7 @@ footer {
         cursor: default;
         display: block;
         border: 2px solid #dce4ec;
-        color: #34495e;
+        color: var(--main-text);
         cursor: pointer;
         height: 40px;
         line-height: 40px;
@@ -134,7 +149,9 @@ footer {
     }
 
     .file-select-button {
-      background: rgb(67, 67, 67);
+      border: 1px solid;
+      border-radius: 3px;
+      background: var(--app-background);
       padding: 0 10px;
       display: inline-block;
       line-height: 40px;
