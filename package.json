@@ -12,6 +12,7 @@
   "dependencies": {
     "@material/button": "^14.0.0",
     "@material/textfield": "^14.0.0",
+    "@material/typography": "^14.0.0",
     "otpauth": "^8.0.2",
     "protobufjs": "^7.1.0",
     "qr-scanner": "^1.4.1"

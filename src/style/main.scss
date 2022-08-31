@@ -1,9 +1,30 @@
+:root {
+  --app-background: #f3f6fd;
+  --main-text: #1f1c2e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --app-background: #1f1d2b;
+    --main-text: #fff;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --app-background: #f3f6fd;
+    --main-text: #1f1c2e;
+  }
+}
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--app-background);
+  color: var(--main-text);
 }
 
 .hidden {
-  display: none  !important;
+  display: none !important;
 }
 
 .migration-uri-field {
@@ -33,6 +54,10 @@ body {
 footer {
   margin-top: 24px;
 
+  a {
+    color: var(--main-text);
+  }
+
   svg {
     height: 30px;
   }
@@ -52,22 +77,12 @@ footer {
     overflow: hidden;
     position: relative;
 
-    &.active {
-      .file-select {
-        transition: all 0.2s ease-in-out;
-
-        .file-select-button {
-          transition: all 0.2s ease-in-out;
-        }
-      }
-    }
-
     &:hover {
       border-color: #34495e;
       transition: all 0.2s ease-in-out;
 
       .file-select-button {
-        background: #ccc;
+        background: #333;
         transition: all 0.2s ease-in-out;
       }
     }
@@ -85,12 +100,12 @@ footer {
         line-height: 40px;
         margin-top: 5px;
         text-align: left;
-        background: #ffffff;
+        background: #CCC;
         overflow: hidden;
         position: relative;
 
         .file-select-button {
-          background: #dce4ec;
+          background: #333;
           color: #666666;
           padding: 0 10px;
           display: inline-block;
@@ -119,7 +134,7 @@ footer {
     }
 
     .file-select-button {
-      background: #dce4ec;
+      background: rgb(67, 67, 67);
       padding: 0 10px;
       display: inline-block;
       line-height: 40px;
