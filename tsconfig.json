@@ -20,5 +20,5 @@
     "noUnusedLocals": true,
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist", "./*.js", "temp"]
+  "exclude": ["node_modules", "dist", "./*.js", "*.config.ts"]
 }
